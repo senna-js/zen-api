@@ -42,6 +42,7 @@
   - [GET Producer's & studio's Anime](#get-anime-of-specific-producers-or-studio)
   - [GET Search Result's Info](#get-search-results-info)
   - [GET Search Suggestions](#get-search-suggestions)
+  - [GET Search Filters](#get-filter-anime)
   - [GET Anime Schedule](#get-schedule-of-upcoming-anime)
   - [GET Anime's Next Epiosde's Schedule](#get-schedule-of-next-episode-of-anime)
   - [GET Anime Qtip Info](#get-qtip-info)
