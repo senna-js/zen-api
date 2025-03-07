@@ -121,7 +121,8 @@ async function extractFilterResults(params = {}) {
           sub: Number($el.find(".tick-sub").text().replace(/[^0-9]/g, '')) || null,
           dub: Number($el.find(".tick-dub").text().replace(/[^0-9]/g, '')) || null,
           eps: Number($el.find(".tick-eps").text().replace(/[^0-9]/g, '')) || null
-        }
+        },
+        adultContent: $el.find(".tick.tick-rate").text().trim() === "18+" || false
       });
     });
 
