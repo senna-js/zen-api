@@ -305,6 +305,37 @@ console.log(resp.data);
   ]
 }
 ```
+
+### `GET` Top Search
+
+```bash
+  GET /api/top-search
+```
+
+> #### No parameter required ❌
+
+#### Example of request
+
+```javascript
+import axios from "axios";
+const resp = await axios.get("/api/top-search");
+console.log(resp.data);
+```
+
+#### Sample Response
+
+```javascript
+{
+  "success": true,
+  "results": [
+    {
+      "title": string,
+      "link": string
+    },
+    {...}
+  ]
+}
+```
 </details>
 
 <a name="get-top-search"></a>
@@ -859,25 +890,26 @@ GET /api/filter
 /api/filter
 ```
 
-**Parameters:**
-| Parameter  | Parameter-Type | Data-Type | Description                                                  | Mandatory ? |   Default   |
-| :--------: | :------------: | :-------: | :----------------------------------------------------------- | :---------: | :---------: |
-|   `type`   |    `query`     |  string   | Type of anime (e.g., `movie`, `tv`, etc.)                    |    No ❌    |    `ALL`    |
-|  `status`  |    `query`     |  string   | Status of anime (e.g., `finished`, `currently_airing`, etc.) |    No ❌    |    `ALL`    |
-|  `rated`   |    `query`     |  string   | Rating of anime (e.g., `G`, `PG`, etc.)                      |    No ❌    |    `ALL`    |
-|  `score`   |    `query`     |  string   | Score rating (e.g., `1` to `10`)                             |    No ❌    |    `ALL`    |
-|  `season`  |    `query`     |  string   | Season of anime (e.g., `spring`, `summer`, etc.)             |    No ❌    |    `ALL`    |
-| `language` |    `query`     |  string   | Language of anime (e.g., `sub`, `dub`)                       |    No ❌    |    `ALL`    |
-|  `genres`  |    `query`     |  string   | Comma-separated list of genres (e.g., `action, comedy`)      |    No ❌    |    `ALL`    |
-|   `sort`   |    `query`     |  string   | Sorting method (e.g., `default`, `score`, etc.)              |    No ❌    |  `DEFAULT`  |
-|   `page`   |    `query`     |  number   | Page number for pagination                                   |    No ❌    |     `1`     |
-|    `sy`    |    `query`     |  number   | Start year                                                   |    No ❌    | `undefined` |
-|    `sm`    |    `query`     |  number   | Start month                                                  |    No ❌    | `undefined` |
-|    `sd`    |    `query`     |  number   | Start day                                                    |    No ❌    | `undefined` |
-|    `ey`    |    `query`     |  number   | End year                                                     |    No ❌    | `undefined` |
-|    `em`    |    `query`     |  number   | End month                                                    |    No ❌    | `undefined` |
-|    `ed`    |    `query`     |  number   | End day                                                      |    No ❌    | `undefined` |
-| `keyword`  |    `query`     |  string   | Search keyword                                               |    No ❌    | `undefined` |
+#### Parameters
+
+| Parameter  | Parameter-Type | Data-Type | Description                                   | Mandatory ? | Default |
+| :--------: | :------------: | :-------: | :------------------------------------------- | :---------: | :-----: |
+| `type`     |    `query`     |  string   | Type of anime (e.g., `movie`, `tv`, etc.)   |    No ❌    | `ALL`  |
+| `status`   |    `query`     |  string   | Status of anime (e.g., `finished`, `currently_airing`, etc.) |    No ❌    | `ALL`  |
+| `rated`    |    `query`     |  string   | Rating of anime (e.g., `G`, `PG`, etc.)      |    No ❌    | `ALL`  |
+| `score`    |    `query`     |  string   | Score rating (e.g., `1` to `10`)             |    No ❌    | `ALL`  |
+| `season`   |    `query`     |  string   | Season of anime (e.g., `spring`, `summer`, etc.) |    No ❌    | `ALL`  |
+| `language` |    `query`     |  string   | Language of anime (e.g., `sub`, `dub`)       |    No ❌    | `ALL`  |
+| `genres`   |    `query`     |  string   | Comma-separated list of genres (e.g., `action, comedy`) |    No ❌    | `ALL`  |
+| `sort`     |    `query`     |  string   | Sorting method (e.g., `default`, `score`, etc.) |    No ❌    | `DEFAULT` |
+| `page`     |    `query`     |  number   | Page number for pagination                    |    No ❌    | `1`    |
+| `sy`       |    `query`     |  number   | Start year                                   |    No ❌    | `undefined` |
+| `sm`       |    `query`     |  number   | Start month                                  |    No ❌    | `undefined` |
+| `sd`       |    `query`     |  number   | Start day                                    |    No ❌    | `undefined` |
+| `ey`       |    `query`     |  number   | End year                                     |    No ❌    | `undefined` |
+| `em`       |    `query`     |  number   | End month                                    |    No ❌    | `undefined` |
+| `ed`       |    `query`     |  number   | End day                                      |    No ❌    | `undefined` |
+| `keyword`  |    `query`     |  string   | Search keyword                                |    No ❌    | `undefined` |
 
 **Example of request:**
 ```javascript
@@ -922,11 +954,9 @@ console.log(resp.data);
   }
 }
 ```
-</details>
 
-<a name="get-animes-episode-list"></a>
-<details>
-<summary><strong>GET Anime's Episode List</strong></summary>
+
+### `GET` Anime's episode list
 
 ```bash
 GET /api/episodes/
@@ -1287,10 +1317,11 @@ GET /api/character/
 /api/character/{id}
 ```
 
-**Parameters:**
-| Parameter-Type | Data-Type | Description  | Mandatory ? | Default |
-| :------------: | :-------: | :----------: | :---------: | :-----: |
-|    `params`    | `string`  | character-id |   Yes ✔️    |   --    |
+#### Parameters
+
+| Parameter-Type | Data-Type | Description | Mandatory ? | Default |
+| :------------: | :-------: | :---------: | :---------: | :-----: |
+|    `params`    | `string`  | character-id|   Yes ✔️    |   --    |
 
 **Example of request:**
 ```javascript
@@ -1347,11 +1378,9 @@ console.log(resp.data);
   }
 }
 ```
-</details>
 
-<a name="get-voice-actor-details"></a>
-<details>
-<summary><strong>GET Voice Actor Details</strong></summary>
+
+### `GET` Voice Actor Details
 
 ```bash
 GET /api/actors/
@@ -1362,10 +1391,11 @@ GET /api/actors/
 /api/actors/{id}
 ```
 
-**Parameters:**
-| Parameter-Type | Data-Type |  Description   | Mandatory ? | Default |
-| :------------: | :-------: | :------------: | :---------: | :-----: |
-|    `params`    | `string`  | voice-actor-id |   Yes ✔️    |   --    |
+#### Parameters
+
+| Parameter-Type | Data-Type | Description | Mandatory ? | Default |
+| :------------: | :-------: | :---------: | :---------: | :-----: |
+|    `params`    | `string`  | voice-actor-id|   Yes ✔️    |   --    |
 
 **Example of request:**
 ```javascript
@@ -1409,7 +1439,7 @@ console.log(resp.data);
   }
 }
 ```
-</details>
+
 
 > ### Pull Requests
 
