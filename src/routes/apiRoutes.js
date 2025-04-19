@@ -36,7 +36,7 @@ export const createApiRoutes = (app, jsonResponse, jsonError) => {
     });
   };
 
-  ["/api", "/api/"].forEach((route) => {
+  ["/api", "/api/home"].forEach((route) => {
     app.get(route, async (req, res) => {
       try {
         const data = await homeInfoController.getHomeInfo(req, res);
