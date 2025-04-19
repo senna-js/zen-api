@@ -1,8 +1,8 @@
 <div align="center">
 
-![Static Badge](https://img.shields.io/badge/node.js-grey?logo=nodedotjs) ![GitHub stars](https://img.shields.io/github/stars/itzzzme/anime-api?logo=github)
-![GitHub forks](https://img.shields.io/github/forks/itzzzme/anime-api?logo=github)
-![Static Badge](https://img.shields.io/badge/version-1.0.0-blue)
+![Static Badge](https://img.shields.io/badge/node.js-grey?logo=nodedotjs) ![GitHub stars](https://img.shields.io/github/stars/PacaHat/zen-api?logo=github)
+![GitHub forks](https://img.shields.io/github/forks/PacaHat/zen-api?logo=github)
+![Static Badge](https://img.shields.io/badge/version-1.0.5-blue)
 
 </div>
 
@@ -24,7 +24,7 @@
 
 >
 
-<p align="center">RestFul API made with Node.js <br/>(Checkout this anime streaming website  <a href="https://zenime.site" tarGET="_blank">Zenime</a> powered by this API)</p>
+<p align="center">RestFul API made with Node.js <br/>(Checkout this anime streaming website  <a href="https://github.anipaca.fun" tarGET="_blank">Anipaca</a> powered by this API)</p>
 
 > <h2> Table of Contents </h2>
 
@@ -33,25 +33,27 @@
 - [Deployment](#deployment)
   - [Vercel](#Vercel)
   - [Render](#Render)
-- [Documentation](#documentation)
   - [GET Home Info](#get-home-info)
   - [GET Top 10 Anime's Info](#get-top-10-animes-info)
+  - [GET Top Search](#get-top-search)
   - [GET Specified Anime's Info](#get-specified-animes-info)
   - [GET Random Anime's Info](#get-random-animes-info)
   - [GET Categories Info](#get-categories-info)
   - [GET Producer's & studio's Anime](#get-anime-of-specific-producers-or-studio)
   - [GET Search Result's Info](#get-search-results-info)
   - [GET Search Suggestions](#get-search-suggestions)
-  - [GET Search Filters](#get-filter-anime)
-  - [GET Anime Schedule](#get-schedule-of-upcoming-anime)
-  - [GET Anime's Next Epiosde's Schedule](#get-schedule-of-next-episode-of-anime)
-  - [GET Anime Qtip Info](#get-qtip-info)
-  - [GET Anime Characters](#get-characters)
+  - [GET Filter Anime](#get-filter-anime)
+  - [GET Anime's Episode List](#get-animes-episode-list)
+  - [GET Anime Schedule](#get-anime-schedule)
+  - [GET Anime's Next Episode's Schedule](#get-animes-next-episodes-schedule)
+  - [GET Qtip Info](#get-qtip-info)
+  - [GET Characters](#get-characters)
+  - [GET Streaming Info](#get-streaming-info)
+  - [GET Available Servers of Anime](#get-available-servers-of-anime)
   - [GET Character Details](#get-character-details)
   - [GET Voice Actor Details](#get-voice-actor-details)
-  - [GET Anime Stream Info](#get-streaming-info)
-  - [GET Anime Episodes](#get-animes-episode-list)
-  - [GET Anime Episode's Available Servers](#get-available-servers-of-anime)
+
+- [Documentation](#documentation)
 - [Pull Requests](#pull-requests)
 - [Reporting Issues](#reporting-issues)
 - [Support](#support)
@@ -65,12 +67,12 @@ Make sure you have node installed on your device
 1. Run the following code to clone the repository and install all required dependencies
 
 ```bash
-$ git clone https://github.com/itzzzme/anime-api.git
-$ cd anime-api
+$ git clone https://github.com/PacaHat/zen-api.git
+$ cd zen-api
 $ npm install
 ```
 
-2. Refer the [.env.example](https://github.com/itzzzme/anime-api/blob/main/.env.example) file to setup `.env` file
+2. Refer the [.env.example](https://github.com/PacaHat/zen-api/blob/main/.env.example) file to setup `.env` file
 
 ```bash
 # Origins you want to allow
@@ -90,40 +92,43 @@ $ npm start #or npm run devStart
 
 Host your own instance of anime-api on vercel
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/itzzzme/anime-api)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/PacaHat/zen-api)
 
 ### Render
 
 Host your own instance of anime-api on Render.
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/itzzzme/anime-api)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/PacaHat/zen-api)
 
 > # Documentation
 
-### `GET` Home info
+
+
+> ## API Endpoints 
+
+<a name="get-home-info"></a>
+<details>
+<summary><strong>GET Home Info</strong></summary>
 
 ```bash
-  GET /api/
+GET /api/home
 ```
 
-### Endpoint
-
+**Endpoint:**
 ```bash
-  /api/
+/api/home
 ```
 
-> #### No parameter required ❌
+_No parameter required ❌_
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
-const resp = await axios.get("/api/");
+const resp = await axios.get("/api/home");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -233,31 +238,31 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-### `GET` Top 10 anime's info
-
-```bash
-  GET /api/top-ten
-```
-
-### Endpoint
+<a name="get-top-10-animes-info"></a>
+<details>
+<summary><strong>GET Top 10 Anime's Info</strong></summary>
 
 ```bash
-  /api/top-ten
+GET /api/top-ten
 ```
 
-> #### No parameter required ❌
+**Endpoint:**
+```bash
+/api/top-ten
+```
 
-#### Example of request
+_No parameter required ❌_
 
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/top-ten");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -300,35 +305,61 @@ console.log(resp.data);
   ]
 }
 ```
+</details>
 
-### `GET` Specified anime's info
-
-```bash
-  GET /api/info
-```
-
-### Endpoint
+<a name="get-top-search"></a>
+<details>
+<summary><strong>GET Top Search</strong></summary>
 
 ```bash
-  /api/info?id={string}
+GET /api/top-search
 ```
 
-#### Parameters
+_No parameter required ❌_
 
+**Example of request:**
+```javascript
+import axios from "axios";
+const resp = await axios.get("/api/top-search");
+console.log(resp.data);
+```
+
+**Sample Response:**
+```javascript
+{
+  "success": true,
+  "results": [
+    {
+      "title": string,
+      "link": string
+    },
+    {...}
+  ]
+}
+```
+</details>
+
+<a name="get-specified-animes-info"></a>
+<details>
+<summary><strong>GET Specified Anime's Info</strong></summary>
+
+```bash
+GET /api/info?id={string}
+```
+
+**Parameters:**
 | Parameter | Parameter-Type | Data-Type | Description | Mandatory ? | Default |
 | :-------: | :------------: | :-------: | :---------: | :---------: | :-----: |
 |   `id`    |    `query`     |  string   |  anime-id   |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/info?id=yami-shibai-9-17879");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -371,29 +402,29 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-### `GET` Random anime's info
-
-```bash
-  GET /api/random
-```
-
-### Endpoint
+<a name="get-random-animes-info"></a>
+<details>
+<summary><strong>GET Random Anime's Info</strong></summary>
 
 ```bash
-  /api/random
+GET /api/random
 ```
 
-#### Example of request
+**Endpoint:**
+```bash
+/api/random
+```
 
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/random");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -472,30 +503,29 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-### `GET` Categories info
-
-```bash
-  GET /api/<category>
-```
-
-### Endpoint
+<a name="get-categories-info"></a>
+<details>
+<summary><strong>GET Categories Info</strong></summary>
 
 ```bash
-  /api/{string}?page={number}
-  #or
-  /api/{string}
+GET /api/<category>
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/{string}?page={number}
+/api/{string}
+```
 
+**Parameters:**
 | Parameter  | Parameter-Type | Data-Type | Description | Mandatory ? | Default |
 | :--------: | :------------: | :-------: | :---------: | :---------: | :-----: |
 | `category` |     `path`     | `string`  | `Category`  |   Yes ✔️    |   --    |
 |   `page`   |    `query`     | `number`  | `Page-no.`  |    No ❌    |   `1`   |
 
-#### List of Categories
-
+**List of Categories:**
 - top-airing
 - most-popular
 - most-favorite
@@ -582,16 +612,14 @@ console.log(resp.data);
 - ona
 - tv
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/most-popular?page=1");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -635,38 +663,36 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-### `GET` Anime of specific producers or studio
-
-```bash
-  GET /api/<producer>/
-```
-
-### Endpoint
+<a name="get-anime-of-specific-producers-or-studio"></a>
+<details>
+<summary><strong>GET Anime of specific producers or studio</strong></summary>
 
 ```bash
-  /api/producer/{string}?page={number}
-  #or
-  /api/producer/{string}
+GET /api/<producer>/
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/producer/{string}?page={number}
+/api/producer/{string}
+```
 
+**Parameters:**
 | Parameter  | Parameter-Type | Data-Type | Description | Mandatory ? | Default |
 | :--------: | :------------: | :-------: | :---------: | :---------: | :-----: |
 | `producer` |     `path`     | `string`  | `Producer`  |   Yes ✔️    |   --    |
 |   `page`   |    `query`     | `number`  | `Page-no.`  |    No ❌    |   `1`   |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/producer/ufotable?page=1");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -710,35 +736,34 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-### `GET` Search result's info
-
-```bash
-  GET /api/search
-```
-
-### Endpoint
+<a name="get-search-results-info"></a>
+<details>
+<summary><strong>GET Search Result's Info</strong></summary>
 
 ```bash
-  /api/search?keyword={string}
+GET /api/search
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/search?keyword={string}
+```
 
+**Parameters:**
 | Parameter | Parameter-Type |   Type   | Description | Mandatory ? | Default |
 | :-------: | :------------: | :------: | :---------: | :---------: | :-----: |
 | `keyword` |    `query`     | `string` |  `keyword`  |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/search?keyword=one%20punch%20man");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -763,35 +788,34 @@ console.log(resp.data);
   ]
 }
 ```
+</details>
 
-### `GET` Search suggestions
-
-```bash
-  GET /api/search/suggest
-```
-
-### Endpoint
+<a name="get-search-suggestions"></a>
+<details>
+<summary><strong>GET Search Suggestions</strong></summary>
 
 ```bash
-  /api/search/suggest?keyword={string}
+GET /api/search/suggest
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/search/suggest?keyword={string}
+```
 
+**Parameters:**
 | Parameter | Parameter-Type |   Type   | Description | Mandatory ? | Default |
 | :-------: | :------------: | :------: | :---------: | :---------: | :-----: |
 | `keyword` |    `query`     | `string` |  `keyword`  |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/search/suggest?keyword=demon");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -820,59 +844,58 @@ console.log(resp.data);
   ]
 }
 ```
+</details>
 
-### `GET` Filter Anime
+<a name="get-filter-anime"></a>
+<details>
+<summary><strong>GET Filter Anime</strong></summary>
 
 ```bash
 GET /api/filter
 ```
 
-#### Endpoint
-
+**Endpoint:**
 ```bash
 /api/filter
 ```
 
-#### Parameters
+**Parameters:**
+| Parameter  | Parameter-Type | Data-Type | Description                                                  | Mandatory ? |   Default   |
+| :--------: | :------------: | :-------: | :----------------------------------------------------------- | :---------: | :---------: |
+|   `type`   |    `query`     |  string   | Type of anime (e.g., `movie`, `tv`, etc.)                    |    No ❌    |    `ALL`    |
+|  `status`  |    `query`     |  string   | Status of anime (e.g., `finished`, `currently_airing`, etc.) |    No ❌    |    `ALL`    |
+|  `rated`   |    `query`     |  string   | Rating of anime (e.g., `G`, `PG`, etc.)                      |    No ❌    |    `ALL`    |
+|  `score`   |    `query`     |  string   | Score rating (e.g., `1` to `10`)                             |    No ❌    |    `ALL`    |
+|  `season`  |    `query`     |  string   | Season of anime (e.g., `spring`, `summer`, etc.)             |    No ❌    |    `ALL`    |
+| `language` |    `query`     |  string   | Language of anime (e.g., `sub`, `dub`)                       |    No ❌    |    `ALL`    |
+|  `genres`  |    `query`     |  string   | Comma-separated list of genres (e.g., `action, comedy`)      |    No ❌    |    `ALL`    |
+|   `sort`   |    `query`     |  string   | Sorting method (e.g., `default`, `score`, etc.)              |    No ❌    |  `DEFAULT`  |
+|   `page`   |    `query`     |  number   | Page number for pagination                                   |    No ❌    |     `1`     |
+|    `sy`    |    `query`     |  number   | Start year                                                   |    No ❌    | `undefined` |
+|    `sm`    |    `query`     |  number   | Start month                                                  |    No ❌    | `undefined` |
+|    `sd`    |    `query`     |  number   | Start day                                                    |    No ❌    | `undefined` |
+|    `ey`    |    `query`     |  number   | End year                                                     |    No ❌    | `undefined` |
+|    `em`    |    `query`     |  number   | End month                                                    |    No ❌    | `undefined` |
+|    `ed`    |    `query`     |  number   | End day                                                      |    No ❌    | `undefined` |
+| `keyword`  |    `query`     |  string   | Search keyword                                               |    No ❌    | `undefined` |
 
-| Parameter  | Parameter-Type | Data-Type | Description                                   | Mandatory ? | Default |
-| :--------: | :------------: | :-------: | :------------------------------------------- | :---------: | :-----: |
-| `type`     |    `query`     |  string   | Type of anime (e.g., `movie`, `tv`, etc.)   |    No ❌    | `ALL`  |
-| `status`   |    `query`     |  string   | Status of anime (e.g., `finished`, `currently_airing`, etc.) |    No ❌    | `ALL`  |
-| `rated`    |    `query`     |  string   | Rating of anime (e.g., `G`, `PG`, etc.)      |    No ❌    | `ALL`  |
-| `score`    |    `query`     |  string   | Score rating (e.g., `1` to `10`)             |    No ❌    | `ALL`  |
-| `season`   |    `query`     |  string   | Season of anime (e.g., `spring`, `summer`, etc.) |    No ❌    | `ALL`  |
-| `language` |    `query`     |  string   | Language of anime (e.g., `sub`, `dub`)       |    No ❌    | `ALL`  |
-| `genres`   |    `query`     |  string   | Comma-separated list of genres (e.g., `action, comedy`) |    No ❌    | `ALL`  |
-| `sort`     |    `query`     |  string   | Sorting method (e.g., `default`, `score`, etc.) |    No ❌    | `DEFAULT` |
-| `page`     |    `query`     |  number   | Page number for pagination                    |    No ❌    | `1`    |
-| `sy`       |    `query`     |  number   | Start year                                   |    No ❌    | `undefined` |
-| `sm`       |    `query`     |  number   | Start month                                  |    No ❌    | `undefined` |
-| `sd`       |    `query`     |  number   | Start day                                    |    No ❌    | `undefined` |
-| `ey`       |    `query`     |  number   | End year                                     |    No ❌    | `undefined` |
-| `em`       |    `query`     |  number   | End month                                    |    No ❌    | `undefined` |
-| `ed`       |    `query`     |  number   | End day                                      |    No ❌    | `undefined` |
-| `keyword`  |    `query`     |  string   | Search keyword                                |    No ❌    | `undefined` |
-
-#### Example of Request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 
 const params = {
-  type: '2', // TV
-  status: '1', // Finished
-  rated: '5', // R+
-  sort: 'default',
-  page: 1
+  type: "2", // TV
+  status: "1", // Finished
+  rated: "5", // R+
+  sort: "default",
+  page: 1,
 };
 
 const resp = await axios.get("/api/filter", { params });
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -899,36 +922,34 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-
-### `GET` Anime's episode list
-
-```bash
-  GET /api/episodes/
-```
-
-### Endpoint
+<a name="get-animes-episode-list"></a>
+<details>
+<summary><strong>GET Anime's Episode List</strong></summary>
 
 ```bash
-  /api/episodes/{param}
+GET /api/episodes/
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/episodes/{param}
+```
 
+**Parameters:**
 | Parameter-Type | Data-Type | Description | Mandatory ? | Default |
 | :------------: | :-------: | :---------: | :---------: | :-----: |
 |    `param`     |  string   |  anime-id   |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/episodes/one-piece-100");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -947,35 +968,34 @@ console.log(resp.data);
   ]
 }
 ```
+</details>
 
-### `GET` Schedule of upcoming anime
-
-```bash
-  GET /api/schedule
-```
-
-### Endpoint
+<a name="get-anime-schedule"></a>
+<details>
+<summary><strong>GET Anime Schedule</strong></summary>
 
 ```bash
-  /api/schedule?date={string}
+GET /api/schedule
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/schedule?date={string}
+```
 
+**Parameters:**
 | Parameter | Parameter-Type | Data-Type | Description | Mandatory ? | Default |
 | :-------: | :------------: | :-------: | :---------: | :---------: | :-----: |
 |  `date`   |     query      |  string   |    date     |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/schedule?date=2024-09-23");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -988,40 +1008,41 @@ console.log(resp.data);
       "releaseDate":string,
       "time":string,
       "episode_no":number
+      "poster": string,
+      "adultContent":boolean,
     },
     {...}
   ]
 }
 ```
+</details>
 
-### `GET` Schedule of next episode of Anime
-
-```bash
-  GET /api/schedule/
-```
-
-### Endpoint
+<a name="get-animes-next-episodes-schedule"></a>
+<details>
+<summary><strong>GET Anime's Next Episode's Schedule</strong></summary>
 
 ```bash
-  /api/schedule/:id
+GET /api/schedule/
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/schedule/:id
+```
 
+**Parameters:**
 | Parameter | Parameter-Type | Data-Type | Description | Mandatory ? | Default |
 | :-------: | :------------: | :-------: | :---------: | :---------: | :-----: |
 |   `id`    |     param      |  string   |  anime-id   |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/schedule/one-piece-100");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success":true,
@@ -1031,35 +1052,34 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-### `GET` Qtip info
-
-```bash
-   GET /api/qtip/
-```
-
-### Endpoint
+<a name="get-qtip-info"></a>
+<details>
+<summary><strong>GET Qtip Info</strong></summary>
 
 ```bash
-   /api/qtip/{id}
+GET /api/qtip/
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/qtip/{id}
+```
 
+**Parameters:**
 | Parameter | Data-Type | Description | Mandatory ? | Default |
 | :-------: | :-------: | :---------: | :---------: | :-----: |
 |  `param`  | `number`  |     id      |   Yes ✔️    | Yes ✔️  |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/qtip/3365");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -1081,35 +1101,34 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-### `GET` Characters
-
-```bash
-   GET /api/character/list/
-```
-
-### Endpoint
+<a name="get-characters"></a>
+<details>
+<summary><strong>GET Characters</strong></summary>
 
 ```bash
-   /api/character/list/{id}
+GET /api/character/list/
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/character/list/{id}
+```
 
+**Parameters:**
 | Parameter-Type | Data-Type | Description | Mandatory ? | Default |
 | :------------: | :-------: | :---------: | :---------: | :-----: |
 |    `param`     | `string`  |  anime-id   |   Yes ✔️    | Yes ✔️  |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/character/list/one-piece-100");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -1141,29 +1160,28 @@ console.log(resp.data);
     ]
   }
 }
-
 ```
+</details>
 
-### `GET` Streaming info
+<a name="get-streaming-info"></a>
+<details>
+<summary><strong>GET Streaming Info</strong></summary>
 
 ```bash
-  GET /api/stream
+GET /api/stream
 ```
 
-### Endpoint
-
+**Endpoint:**
 ```bash
-  /api/stream?id={string}&server={string}&type={string}
+/api/stream?id={string}&server={string}&type={string}
 ```
 
-#### Parameters
-
+**Parameters:**
 |        Parameters        | Parameter-Type |   Type   | Description | Mandatory ? | Default |
 | :----------------------: | :------------: | :------: | :---------: | :---------: | :-----: |
 | `id` , `server` , `type` |    `query`     | `string` |  `keyword`  |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get(
@@ -1172,8 +1190,7 @@ const resp = await axios.get(
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -1211,27 +1228,27 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-### `GET` Available servers of anime
-
-```bash
-  GET /api/servers/
-```
-
-### Endpoint
+<a name="get-available-servers-of-anime"></a>
+<details>
+<summary><strong>GET Available Servers of Anime</strong></summary>
 
 ```bash
-  /api/servers/{id}
+GET /api/servers/
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/servers/{id}
+```
 
+**Parameters:**
 | Parameter-Type | Data-Type | Description | Mandatory ? | Default |
 | :------------: | :-------: | :---------: | :---------: | :-----: |
 |    `params`    | `string`  |  `keyword`  |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get(
@@ -1240,8 +1257,7 @@ const resp = await axios.get(
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -1256,35 +1272,34 @@ console.log(resp.data);
   ]
 }
 ```
+</details>
 
-### `GET` Character Details
-
-```bash
-  GET /api/character/
-```
-
-### Endpoint
+<a name="get-character-details"></a>
+<details>
+<summary><strong>GET Character Details</strong></summary>
 
 ```bash
-  /api/character/{id}
+GET /api/character/
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/character/{id}
+```
 
-| Parameter-Type | Data-Type | Description | Mandatory ? | Default |
-| :------------: | :-------: | :---------: | :---------: | :-----: |
-|    `params`    | `string`  | character-id|   Yes ✔️    |   --    |
+**Parameters:**
+| Parameter-Type | Data-Type | Description  | Mandatory ? | Default |
+| :------------: | :-------: | :----------: | :---------: | :-----: |
+|    `params`    | `string`  | character-id |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/character/asta-340");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -1332,36 +1347,34 @@ console.log(resp.data);
   }
 }
 ```
+</details>
 
-
-### `GET` Voice Actor Details
-
-```bash
-  GET /api/actors/
-```
-
-### Endpoint
+<a name="get-voice-actor-details"></a>
+<details>
+<summary><strong>GET Voice Actor Details</strong></summary>
 
 ```bash
-  /api/actors/{id}
+GET /api/actors/
 ```
 
-#### Parameters
+**Endpoint:**
+```bash
+/api/actors/{id}
+```
 
-| Parameter-Type | Data-Type | Description | Mandatory ? | Default |
-| :------------: | :-------: | :---------: | :---------: | :-----: |
-|    `params`    | `string`  | voice-actor-id|   Yes ✔️    |   --    |
+**Parameters:**
+| Parameter-Type | Data-Type |  Description   | Mandatory ? | Default |
+| :------------: | :-------: | :------------: | :---------: | :-----: |
+|    `params`    | `string`  | voice-actor-id |   Yes ✔️    |   --    |
 
-#### Example of request
-
+**Example of request:**
 ```javascript
 import axios from "axios";
 const resp = await axios.get("/api/actors/gakuto-kajiwara-534");
 console.log(resp.data);
 ```
 
-#### Sample Response
-
+**Sample Response:**
 ```javascript
 {
   "success": true,
@@ -1396,7 +1409,7 @@ console.log(resp.data);
   }
 }
 ```
-
+</details>
 
 > ### Pull Requests
 
@@ -1414,5 +1427,8 @@ If you discover any issues or have suggestions for improvement, please open an i
 >
 > If you like the project feel free to drop a star ✨. Your appreciation means a lot.
 
-<p align="center" style="text-decoration: none;">Made by <a href="https://github.com/itzzzme" tarGET="_blank">itzzzme 
-</a>🫰</p>
+<p align="center" style="text-decoration: none;">
+  Currently managed by <a href="https://github.com/PacaHat" target="_blank">PacaHat</a><br>
+  Made by <a href="https://github.com/itzzzme" target="_blank">itzzzme</a>
+</p>
+
