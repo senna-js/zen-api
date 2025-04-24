@@ -92,13 +92,13 @@ $ npm start #or npm run devStart
 
 Host your own instance of anime-api on vercel
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/PacaHat/zen-api)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/senna-js/zen-api)
 
 ### Render
 
 Host your own instance of anime-api on Render.
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/PacaHat/zen-api)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/senna-js/zen-api)
 
 > # Documentation
 
